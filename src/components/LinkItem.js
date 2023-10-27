@@ -44,7 +44,7 @@ const LinkItem = (props) => {
                 if(feedLink.id == link.id) { //maybe ===
                     return {
                         ...feedLink,
-                        votes: [...feedLink.votes, vote] //multiple votes possible in cache
+                        votes: [...feedLink.votes, vote] //multiple votes possible in cache, unless no vote is returned by the mutation?
                     };
                 }
                 return feedLink;

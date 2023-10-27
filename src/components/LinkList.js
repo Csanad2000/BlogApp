@@ -30,9 +30,9 @@ const LinkList = () => {
     const {data} = useQuery(FEED_QUERY);
 
     return (
-        <div>
-            {data && <>
-                {data.feed.links.map((link, index) => (
+        <div> 
+            {data && <> 
+                {data.feed.links.map((link, index) => ( //are tags needed?
                     <LinkItem key = {link.id} link = {link} index = {index}/>
                 ))}
             </>

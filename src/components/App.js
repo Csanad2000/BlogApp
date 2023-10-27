@@ -5,6 +5,7 @@ import Header from './Header';
 import Login from './Login';
 import {Route, Routes} from 'react-router-dom';
 import './../styles/App.css';
+import Search from './Search';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route path='/' element={<LinkList/>}/>
           <Route path='/create' element={<CreateLink/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/search' element={<Search/>}/>
         </Routes>
       </div>
     );

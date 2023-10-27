@@ -29,6 +29,7 @@ const Header = () => {
                 )}
             </div>
             <div>
+                <div>|</div>
                 {authToken ? (
                     <div onClick={() => {
                         localStorage.removeItem(AUTH_TOKEN);

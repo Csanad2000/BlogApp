@@ -19,8 +19,7 @@ const LinkList = () => {
 
     return (
         <div>
-            {data &&
-            <>
+            {data && <>
                 {data.feed.links.map((link) => (
                     <LinkItem key = {link.id} link = {link}/>
                 ))}

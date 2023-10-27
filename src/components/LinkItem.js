@@ -41,7 +41,7 @@ const LinkItem = (props) => {
             });
 
             const updatedLinks = feed.links.map((feedLink) => {
-                if(feedLink.id == link.id) { //maybe ===
+                if(feedLink.id === link.id) {
                     return {
                         ...feedLink,
                         votes: [...feedLink.votes, vote] //multiple votes possible in cache, unless no vote is returned by the mutation?

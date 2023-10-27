@@ -37,7 +37,7 @@ const CreateLink = () => {
             <form onSubmit = {(e) => {e.preventDefault(); createLink();}}>
                 <div>
                     <input
-                        value = {fromState.description}
+                        value = {formState.description}
                         onChange = {(e) => setFormState({
                             ...formState,
                             description: e.target.value
@@ -46,7 +46,7 @@ const CreateLink = () => {
                         placeholder = 'A description for the link'
                     />
                     <input
-                        value = {fromState.url}
+                        value = {formState.url}
                         onChange = {(e) => setFormState({
                             ...formState,
                             url: e.target.value

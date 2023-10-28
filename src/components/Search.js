@@ -1,30 +1,7 @@
 import React, { useState } from 'react';
-import { useLazyQuery, gql } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import LinkItem from './LinkItem';
-
-const FEED_SEARCH_QUERY = gql`
-query FeedSearchQuery($filter: String!) {
-    feed(filter: $filter) {
-        id
-        links {
-            id
-            url
-            description
-            createdAt
-            postedBy {
-                id
-                name
-            }
-            votes {
-                id
-                user {
-                    id
-                }
-            }
-        }
-    }
-}
-`;
+import {FEED_SEARCH_QUERY} from '../constants';
 
 const Search = () => {
     const [searchFilter, setSearchFilter] = useState('');

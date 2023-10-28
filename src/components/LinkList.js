@@ -1,85 +1,8 @@
 import React from 'react';
 import LinkItem from './LinkItem';
-import {useQuery, gql} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { LINKS_PER_PAGE } from '../constants';
-
-export const FEED_QUERY = gql`
-query FeedQuery(
-    $take: Int
-    $skip: Int
-    $orderBy: LinkOrderByInput
-) {
-    feed(take: $take, skip: $skip, orderBy: $orderBy) {
-        id
-        links {
-            id
-            url
-            description
-            createdAt
-            postedBy {
-                id
-                name
-            }
-            votes {
-                id
-                user {
-                    id
-                }
-            }
-        }
-        count
-    }
-}
-`;
-
-const NEW_LINKS_SUBSCRIPTION = gql`
-subscription {
-    newLink {
-        id
-        url
-        description
-        createdAt
-        postedBy {
-            id
-            name
-        }
-        votes {
-            id
-            user {
-                id
-            }
-        }
-    }
-}
-`;
-
-const NEW_VOTES_SUBSCRIPTION = gql`
-subscription {
-    newVote {
-        id
-        link {
-            id
-            url
-            description
-            createdAt
-            postedBy {
-                id
-                name
-            }
-            votes {
-                id
-                user {
-                    id
-                }
-            }
-        }
-        user {
-            id
-        }
-    }
-}
-`;
+import { LINKS_PER_PAGE, FEED_QUERY, NEW_LINKS_SUBSCRIPTION, NEW_VOTES_SUBSCRIPTION } from '../constants';
 
 const LinkList = () => {
     const location = useLocation();

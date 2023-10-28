@@ -1,37 +1,7 @@
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {AUTH_TOKEN} from '../constants'
-
-const SIGNUP_MUTATION = gql`
-mutation SignupMutation(
-    $email: String!
-    $password: String!
-    $name: String!
-) {
-    signup(
-        email: $email
-        password: $password
-        name: $name
-    ) {
-        token
-    }
-}
-`;
-
-const LOGIN_MUTATION = gql`
-mutation LoginMutation(
-    $email: String!
-    $password: String!
-) {
-    login(
-        email: $email
-        password: $password
-    ) {
-        token
-    }
-}
-`;
+import {AUTH_TOKEN, SIGNUP_MUTATION, LOGIN_MUTATION} from '../constants'
 
 const Login = () => {
     const navigate = useNavigate();

@@ -1,31 +1,8 @@
 import React from 'react';
 import {AUTH_TOKEN, LINKS_PER_PAGE} from '../constants';
 import {timeDifferenceForDate} from '../utils';
-import { gql, useMutation } from '@apollo/client';
-import {FEED_QUERY} from './LinkList';
-
-const VOTE_MUTATION = gql`
-mutation VoteMutation(
-    $linkId: ID!
-) {
-    vote(
-        linkId: $linkId
-    ) {
-        id
-        link {
-            votes {
-                id
-                user {
-                    id
-                }
-            }
-        }
-        user {
-            id
-        }
-    }
-}
-`;
+import { useMutation } from '@apollo/client';
+import {FEED_QUERY, VOTE_MUTATION} from '../constants';
 
 const LinkItem = (props) => {
     const {link} = props;

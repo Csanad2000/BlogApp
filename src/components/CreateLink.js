@@ -1,22 +1,8 @@
 import React, {useState} from 'react';
-import {useMutation, gql} from '@apollo/client';
+import {useMutation} from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { FEED_QUERY } from './LinkList';
-import { AUTH_TOKEN, LINKS_PER_PAGE } from '../constants';
-
-const CREATE_LINK_MUTATION = gql`
-mutation PostMutation(
-    $description: String!
-    $url: String!
-) {
-    post(description: $description, url: $url) {
-        id
-        createdAt
-        url
-        description
-    }
-}
-`;
+import { LINKS_PER_PAGE, CREATE_LINK_MUTATION } from '../constants';
 
 const CreateLink = () => {
     const [formState, setFormState] = useState({

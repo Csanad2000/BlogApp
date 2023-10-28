@@ -16,6 +16,10 @@ const Header = () => {
                     new
                 </Link>
                 <div>|</div>
+                <Link to='/top'>
+                    top
+                </Link>
+                <div>|</div>
                 <Link to='/search'>
                     search
                 </Link>

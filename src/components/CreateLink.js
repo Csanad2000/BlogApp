@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import { FEED_QUERY } from './LinkList';
-import { LINKS_PER_PAGE, CREATE_LINK_MUTATION } from '../constants';
+import { LINKS_PER_PAGE, CREATE_LINK_MUTATION, FEED_QUERY } from '../constants';
 
 const CreateLink = () => {
     const [formState, setFormState] = useState({

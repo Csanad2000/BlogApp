@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './components/App';
-import {ApolloProvider, ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
+import {ApolloProvider, ApolloClient, createHttpLink, InMemoryCache, split} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter } from 'react-router-dom';
 import { AUTH_TOKEN } from './constants';
+import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

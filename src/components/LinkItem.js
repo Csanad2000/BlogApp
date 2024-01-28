@@ -11,7 +11,7 @@ const LinkItem = (props) => {
     const skip = 0;
     const orderBy = {createdAt:'desc'};
 
-    const [vote] = useMutation(VOTE_MUTATION, {
+    const [vote] = useMutation(VOTE_MUTATION, { //handle multiple votes error
         variables: {
             linkId: link.id
         },
@@ -29,7 +29,7 @@ const LinkItem = (props) => {
                 if(feedLink.id === link.id) {
                     return {
                         ...feedLink,
-                        votes: [...feedLink.votes, vote] //multiple votes possible in cache, unless no vote is returned by the mutation?
+                        votes: [...feedLink.votes, vote]
                     };
                 }
                 return feedLink;

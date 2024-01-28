@@ -19,7 +19,7 @@ const Search = () => {
             })}>OK</button>
             {data &&
                 data.feed.links.map((link, index) => (
-                    <LinkItem key={link.id} link={link} index={index}/>
+                    <LinkItem key={link.id} link={link} index={index}/> //site malfunctions after second voting on found link (search/vote/duplicate vote, narrow down)
                 ))}
         </div>
     );

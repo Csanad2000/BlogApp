@@ -74,7 +74,7 @@ const Login = () => {
                         })
                     }
                     type='password'
-                    placeholder='Choose a safe password'
+                    placeholder={formState.login ? 'Your password' : 'Choose a safe password'}
                 />
             </div>
             <div>

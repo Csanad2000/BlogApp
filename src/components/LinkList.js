@@ -1,6 +1,6 @@
 import React from 'react';
 import LinkItem from './LinkItem';
-import {useQuery} from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LINKS_PER_PAGE, FEED_QUERY, NEW_LINKS_SUBSCRIPTION, NEW_VOTES_SUBSCRIPTION } from '../constants';
 
@@ -13,21 +13,21 @@ const LinkList = () => {
     const getQueryVariables = (isNewPage, page) => {
         const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
         const take = isNewPage ? LINKS_PER_PAGE : 100;
-        const orderBy = {createdAt: 'desc'};
+        const orderBy = { createdAt: 'desc' };
 
-        return {take, skip, orderBy};
+        return { take, skip, orderBy };
     };
-    const {data, loading, error, subscribeToMore} = useQuery(FEED_QUERY, {
+    const { data, loading, error, subscribeToMore } = useQuery(FEED_QUERY, {
         variables: getQueryVariables(isNewPage, page)
     });
 
     subscribeToMore({
         document: NEW_LINKS_SUBSCRIPTION,
-        updateQuery: (prev, {subscriptionData}) => {
-            if(!subscriptionData.data) return prev;
+        updateQuery: (prev, { subscriptionData }) => {
+            if (!subscriptionData.data) return prev;
             const newLink = subscriptionData.data.newLink;
             const exists = prev.feed.links.find(
-                ({id}) => id === newLink.id
+                ({ id }) => id === newLink.id
             );
             if (exists) return prev;
 
@@ -46,7 +46,7 @@ const LinkList = () => {
     });
 
     const getLinksToRender = (isNewPage, data) => {
-        if(isNewPage) return data.feed.links;
+        if (isNewPage) return data.feed.links;
         const rankedLinks = data.feed.links.slice();
         rankedLinks.sort(
             (l1, l2) => l2.votes.length - l1.votes.length
@@ -60,26 +60,26 @@ const LinkList = () => {
         <div>
             {loading && <p>Loading...</p>}
             {error && <pre>{JSON.stringify(error, null, 2)}</pre>}
-            {data && <> 
+            {data && <>
                 {getLinksToRender(isNewPage, data).map((link, index) => ( //are tags needed?
-                    <LinkItem key = {link.id} link = {link} index = {index}/>
+                    <LinkItem key={link.id} link={link} index={index} />
                 ))}
-                {isNewPage && <>
-                    <div onClick={() => {
+                {isNewPage && <div className="flex ml4 mv3 gray">
+                    <div className="pointer mr2" onClick={() => {
                         if (page > 1) {
                             navigate(`/new/${page - 1}`);
                         }
                     }}>
                         Previous
                     </div>
-                    <div onClick={() => {
+                    <div className="pointer" onClick={() => {
                         if (page <= data.feed.count / LINKS_PER_PAGE) {
                             navigate(`/new/${page + 1}`);
                         }
                     }}>
                         Next
                     </div>
-                </>}
+                </div>}
             </>}
         </div>
     );

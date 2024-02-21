@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {AUTH_TOKEN, SIGNUP_MUTATION, LOGIN_MUTATION} from '../constants'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AUTH_TOKEN, SIGNUP_MUTATION, LOGIN_MUTATION } from '../constants'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Login = () => {
             email: formState.email,
             password: formState.password
         },
-        onCompleted: ({signup}) => {
+        onCompleted: ({ signup }) => {
             localStorage.setItem(AUTH_TOKEN, signup.token);
             navigate('/');
         }
@@ -29,7 +29,7 @@ const Login = () => {
             email: formState.email,
             password: formState.password
         },
-        onCompleted: ({login}) => {
+        onCompleted: ({ login }) => {
             localStorage.setItem(AUTH_TOKEN, login.token);
             navigate('/');
         }
@@ -37,14 +37,14 @@ const Login = () => {
 
     return (
         <div>
-            <h4>
+            <h4 className="mv3">
                 {formState.login ? 'Login' : 'Sign Up'}
             </h4>
-            <div>
+            <div className="flex flex-column">
                 {!formState.login && (
                     <input
                         value={formState.name}
-                        onChange={(e) => 
+                        onChange={(e) =>
                             setFormState({
                                 ...formState,
                                 name: e.target.value
@@ -56,7 +56,7 @@ const Login = () => {
                 )}
                 <input
                     value={formState.email}
-                    onChange={(e) => 
+                    onChange={(e) =>
                         setFormState({
                             ...formState,
                             email: e.target.value
@@ -77,12 +77,12 @@ const Login = () => {
                     placeholder={formState.login ? 'Your password' : 'Choose a safe password'}
                 />
             </div>
-            <div>
-                <button onClick={formState.login ? login : signup}>
+            <div className="flex mt3">
+                <button className="pointer mr2 button" onClick={formState.login ? login : signup}>
                     {formState.login ? 'login' : 'create account'}
                 </button>
                 <button
-                    onClick={(e) =>
+                    className="pointer button" onClick={(e) =>
                         setFormState({
                             ...formState,
                             login: !formState.login
@@ -90,8 +90,8 @@ const Login = () => {
                     }
                 >
                     {formState.login
-                    ? 'need to create an account?'
-                    : 'already have an account?'}
+                        ? 'need to create an account?'
+                        : 'already have an account?'}
                 </button>
             </div>
         </div>
